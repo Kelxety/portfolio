@@ -23,13 +23,13 @@ const Hero = (props: Props) => {
          <BackgroundOfHero />
          <img
             className='relative rounded-full h-32 w-32 mx-auto object-cover'
-            src='https://scontent.fceb2-1.fna.fbcdn.net/v/t39.30808-6/300565943_5800404076645236_3365251321932448875_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_aseGXtamigAX9cebeH&_nc_ht=scontent.fceb2-1.fna&oh=00_AT-xOvRPs_I3jERIx9oncvLZtnUTG-5xG1ljR_54wokghw&oe=633E25C5'
+            src='/images/owner.jpg'
          />
          <div className='z-20'>
             <h2 className='text-sm uppercase text-gray-500 pb-2 tracking-[15px]'>WEB DEVELOPER</h2>
             <h1 className='text-5xl lg:text-6xl font-semibold px-10'>
                <span className='mr-3'>{text}</span>
-               <Cursor cursorColor='#F7AB0A'/>
+               <Cursor cursorColor='#ec4e4e'/>
             </h1>
             <div className='pt-5'>
                <Link href="#about">
