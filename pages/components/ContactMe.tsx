@@ -33,27 +33,27 @@ const ContactMe = (props: Props) => {
         <div className="space-y-1">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
-            <p className="text-xl">+1234567890</p>
+            <p className="text-xl">+639177516377</p>
           </div>
 
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
-            <p className="text-xl">jrldev@gmail.com</p>
+            <p className="text-xl">devjrl.programmer@gmail.com</p>
           </div>
 
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-[#F7AB0A] h-7 w-7 animate-pulse" />
-            <p className="text-xl">+1234567890</p>
+            <p className="text-xl">Puerto Princesa City, Palawan</p>
           </div>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}  className="flex flex-col space-y-2 w-fit mx-auto">
           <div className="md:space-x-2 md:flex w-full">
-            <input {...register('name')} placeholder="Name" className="contactInput w-full mb-2 md:mb-0" type="text" />
-            <input {...register('email')} placeholder="Email" className="contactInput w-full" type="email" />
+            <input required {...register('name')} placeholder="Name" className="contactInput w-full mb-2 md:mb-0" type="text" />
+            <input required {...register('email')} placeholder="Email" className="contactInput w-full" type="email" />
           </div>
-          <input {...register('subject')} placeholder="Subject" className="contactInput" type="text" />
-          <textarea {...register('message')} placeholder="Message" className="contactInput" />
+          <input required {...register('subject')} placeholder="Subject" className="contactInput" type="text" />
+          <textarea required {...register('message')} placeholder="Message" className="contactInput" />
           <button className="bg-[#F7AB0A] py-2 rounded-md text-black font-bold text-lg" type="submit">Submit</button>
         </form>
       </div>
