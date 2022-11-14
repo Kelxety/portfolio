@@ -10,6 +10,7 @@ import { fetchSkills } from '../utils/fetchSkills';
 import { fetchSocials } from '../utils/fetchSocials';
 import About from './components/About';
 import ContactMe from './components/ContactMe';
+import Development from './components/Development';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -66,6 +67,11 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
       {/* Contact Me */}
       <section id="contact" className="snap-start">
         <ContactMe />
+      </section>
+
+      {/* Added Recent Development */}
+      <section>
+        <Development />
       </section>
 
       <Link href="#hero">
