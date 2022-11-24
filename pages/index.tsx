@@ -60,7 +60,7 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
 
       {/* Projects */}
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={projects} />
       </section>
 
       {/* Contact Me */}
@@ -73,9 +73,10 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
         <footer className='bottom-5 w-full cursor-pointer'>
           <div className='flex items-center justify-center'>
             <img
-              className='h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer'
-              src="https://i.imgur.com/e2yvD6A.png"
+              className='h-5 w-8 rounded-full filter grayscale hover:grayscale-0 cursor-pointer'
+              src={"/images/jrl.png"}
               alt=""
+              
             />
             <p className='text-xs p-4 text-white/50'>Copyright @ jrldev.programmer@gmail.com</p>
           </div>
