@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Experience, PageInfo, Project, Skill, Social } from '../typings';
 import { fetchExperiences } from '../utils/fetchExperiences';
