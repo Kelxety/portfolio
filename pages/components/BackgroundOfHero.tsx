@@ -1,9 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
-type Props = {}
-
-const BackgroundOfHero = (props: Props) => {
+const BackgroundOfHero = () => {
    return (
       <motion.div
          initial={{

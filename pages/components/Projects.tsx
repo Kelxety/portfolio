@@ -30,7 +30,7 @@ const Projects = ({projects}: Props) => {
                 {" "} : {i + 1} of {projects.length}
                 </span>
               </h4>
-              <p className="text-xs md:text-lg text-center md:text-left">{project.summary}.</p>
+              <p className="text-xs md:text-lg text-center md:text-left">{project?.summary}.</p>
             </div>
           </div>
         ))}

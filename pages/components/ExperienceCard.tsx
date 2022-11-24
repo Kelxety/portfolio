@@ -24,8 +24,8 @@ const ExperienceCard = ({ experience }: Props) => {
          alt=""
       />
       <div className="px-0 md:px-10">
-         <h4 className="text-xl md:text-1xl lg:text-2xl font-light text-center">{experience.jobTitle}</h4>
-         <p className="font-bold text-sm md:text-xl text-center">{experience.company}</p>
+         <h4 className="text-xl md:text-1xl lg:text-2xl font-light text-center">{experience?.jobTitle}</h4>
+         <p className="font-bold text-sm md:text-xl text-center">{experience?.company}</p>
          <div className="flex space-x-2 my-2">
             {experience?.technologies.map((technology) => (
                <img
@@ -35,10 +35,10 @@ const ExperienceCard = ({ experience }: Props) => {
                />
             ))}
          </div>
-         <p className='uppercase py-5 text-gray-300'>{new Date(experience.dateStarted).toDateString()}  - {" "}
-            {experience.isCurrentlyWorkingHere ?
+         <p className='uppercase py-5 text-gray-300'>{new Date(experience?.dateStarted).toDateString()}  - {" "}
+            {experience?.isCurrentlyWorkingHere ?
                "Present" :
-               new Date(experience.dateEnded).toDateString()
+               new Date(experience?.dateEnded).toDateString()
             }</p>
 
          <ul className="list-disc space-y-1 ml-5 text-xs overflow-y-scroll h-[100px] scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-red-500/80 pr-5">
