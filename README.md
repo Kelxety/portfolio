@@ -5,13 +5,13 @@
 
 - 🌱 I’m currently learning **Create-T3-Stack for web & Create-T3-Turbo for android**
 
-- 👨‍💻 All of my projects are available at [https://jrl.app](https://jrl.app)
+- 👨‍💻 All of my projects are available at [https://jrlapp.vercel.app/](https://jrlapp.vercel.app/)
 
 - 💬 Ask me about **MERN Stack and of course the NextJS**
 
 - 📫 How to reach me **devjrl.programmer@gmail.com**
 
-- 📄 Know about my experiences [https://jrl.app](https://jrl.app)
+- 📄 Know about my experiences [https://jrlapp.vercel.app/](https://jrlapp.vercel.app/)
 
 - ⚡ Fun fact **I'm supper dedicated to learn new things!**
 
