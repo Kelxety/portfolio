@@ -1,9 +1,9 @@
 <h1 align="center">Hi 👋, I'm John Robin Llanzna</h1>
 <h3 align="center">I'm a Software Engineer</h3>
 
-- 🔭 I’m currently working on [PhilSMS](https://philsms.com/)
+- 🔭 I’m currently working on [PICTP](https://palawan.gov.ph/) & [Chromelot](https://turbogear.com)
 
-- 🌱 I’m currently learning **Create-T3-Stack for web & Create-T3-Turbo for android**
+- 🌱 I’m enjoying NextJS 13 app directory
 
 - 👨‍💻 All of my projects are available at [https://jrlapp.vercel.app/](https://jrlapp.vercel.app/)
 
