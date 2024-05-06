@@ -32,7 +32,7 @@ const NewProjects = ({ projects }: Props) => {
         <div className="w-full rounded-xl py-10 px-4 bg-gray-800">
           <Carousel>
             <CarouselContent>
-              {projects.map((project) => (
+              {projects?.map((project) => (
                 <CarouselItem key={project.title}>
                   {project.image && (
                     <motion.img

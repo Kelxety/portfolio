@@ -30,7 +30,7 @@ const NewWorkExperience = ({ experiences }: Props) => {
       </h3>
       <Carousel>
         <CarouselContent>
-          {experiences.map((company) => (
+          {experiences?.map((company) => (
             <CarouselItem key={company.company}>
               <Card>
                 <CardHeader>
