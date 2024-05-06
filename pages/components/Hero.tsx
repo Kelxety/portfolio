@@ -37,16 +37,16 @@ const Hero = ({ pageInfo }: Props) => {
               <span className="mr-3">{text}</span>
               <Cursor cursorColor="#ec4e4e" />
             </h1>
-            <div className="pt-5">
+            <div className="pt-5 space-x-4">
               <Link href="#about">
                 <button className="heroButton">About</button>
               </Link>
-              <Link href="#experience">
+              {/* <Link href="#experience">
                 <button className="heroButton">Experience</button>
               </Link>
               <Link href="#skills">
                 <button className="heroButton">Skills</button>
-              </Link>
+              </Link> */}
               <Link href="#projects">
                 <button className="heroButton">Projects</button>
               </Link>
