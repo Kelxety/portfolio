@@ -1,12 +1,14 @@
-import { Project } from "../typings";
+import { Project } from "@/typings";
 
-export const fetchProjects = async():Promise<Project[]> => {
-   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProjects`);
+export const fetchProjects = async (): Promise<Project[]> => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/getProjects`
+  );
 
-   if (!res) return Promise.resolve([]);
-   
-   const data = await res.json()
-   const projects: Project[] = data.projects
+  if (!res) return Promise.resolve([]);
 
-   return projects;
-}
+  const data = await res.json();
+  const projects: Project[] = data.projects;
+
+  return projects;
+};

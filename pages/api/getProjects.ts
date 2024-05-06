@@ -8,17 +8,19 @@ const query = groq`
    ...,
    technologies[]->
  }
-`
+`;
 
 type Data = {
-   projects: Project[]
-}
+  projects: Project[];
+};
 
 export default async function handler(
-   req: NextApiRequest,
-   res: NextApiResponse<Data>
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
 ) {
-   const projects: Project[] = await sanityClient.fetch(query).catch(() => {return;});
+  const projects: Project[] = await sanityClient.fetch(query).catch(() => {
+    return;
+  });
 
-   res.status(200).json({ projects })
+  res.status(200).json({ projects });
 }

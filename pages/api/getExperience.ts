@@ -8,17 +8,21 @@ const query = groq`
    ...,
    technologies[]->
  }
-`
+`;
 
 type Data = {
-   experiences: Experience[]
-}
+  experiences: Experience[];
+};
 
 export default async function handler(
-   req: NextApiRequest,
-   res: NextApiResponse<Data>
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
 ) {
-   const experiences: Experience[] = await sanityClient.fetch(query).catch(() => {return;});
+  const experiences: Experience[] = await sanityClient
+    .fetch(query)
+    .catch(() => {
+      return;
+    });
 
-   res.status(200).json({ experiences })
+  res.status(200).json({ experiences });
 }

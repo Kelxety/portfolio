@@ -3,6 +3,21 @@ import { motion } from "framer-motion";
 import { Experience } from "../../typings";
 import { urlFor } from "../../sanity";
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
 type Props = {
   experience: Experience;
 };

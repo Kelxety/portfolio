@@ -14,6 +14,8 @@ import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import WorkExperience from "./components/WorkExperience";
+import NewWorkExperience from "./components/NewWorkExperience";
+import NewProjects from "./components/NewProjects";
 
 interface Props {
   pageInfo: PageInfo;
@@ -27,7 +29,7 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 md:scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-red-500/80">
       <Head>
-        <title>{pageInfo.name}{" "} Portfolio</title>
+        <title>{pageInfo.name} Portfolio</title>
         <meta name="description" content="This is my Portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -48,18 +50,20 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
           </section>
 
           {/* Experience */}
-          <section id="experience" className="snap-center">
+          {/* <section id="experience" className="snap-center">
             <WorkExperience experiences={experiences} />
-          </section>
+            <NewWorkExperience experiences={experiences} />
+          </section> */}
 
           {/* Skills */}
-          <section id="skills" className="snap-start px-4">
+          {/* <section id="skills" className="snap-start px-4">
             <Skills skills={skills} />
-          </section>
+          </section> */}
 
           {/* Projects */}
           <section id="projects" className="snap-start">
-            <Projects projects={projects} />
+            {/* <Projects projects={projects} /> */}
+            <NewProjects projects={projects} />
           </section>
 
           {/* Contact Me */}
