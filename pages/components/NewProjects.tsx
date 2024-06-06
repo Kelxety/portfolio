@@ -22,6 +22,8 @@ type Props = {
 };
 
 const NewProjects = ({ projects }: Props) => {
+  projects.sort((a, b) => a.order - b.order);
+
   return (
     <section>
       <motion.div className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-5xl px-2 md:px-10 justify-evenly mx-auto items-center">
@@ -53,7 +55,7 @@ const NewProjects = ({ projects }: Props) => {
                   <Card>
                     <CardHeader>
                       <div className="flex sm:flex-row flex-col justify-center items-center">
-                        {project.image && (
+                        {project?.logo && (
                           <>
                             <motion.img
                               initial={{
@@ -66,7 +68,7 @@ const NewProjects = ({ projects }: Props) => {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{ once: true }}
                               className="w-16 h-16 rounded-full xl:w-[75px] xl:h-[75px] object-cover object-center m-4"
-                              src={urlFor(project?.image).url() || ""}
+                              src={urlFor(project?.logo).url()}
                               alt=""
                             />
                           </>
