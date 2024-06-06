@@ -22,7 +22,9 @@ type Props = {
 };
 
 const NewProjects = ({ projects }: Props) => {
-  projects.sort((a, b) => a.order - b.order);
+  if (projects.length) {
+    projects.sort((a, b) => a.order - b.order);
+  }
 
   return (
     <section>
