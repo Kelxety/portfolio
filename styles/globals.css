@@ -93,3 +93,8 @@
     .no-scrollbar::-webkit-scrollbar {
       display: none; /* WebKit */
     }
+
+    /* contact form inputs */
+    .contactInput {
+      @apply px-4 py-3 rounded-lg bg-[#0f1720] border border-white/5 text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F7AB0A]/40 transition-shadow;
+    }
