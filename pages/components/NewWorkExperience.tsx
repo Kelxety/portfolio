@@ -38,7 +38,7 @@ const NewWorkExperience = ({ experiences }: Props) => {
             Experience
           </h3>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mt-4">
-            10 YEARS OF EXPERIENCE
+            10 YEARS OF <span className="text-yellow-500">EXPERIENCE</span>
           </h2>
           <p className="mt-4 text-gray-400 max-w-sm">
             A selection of companies and roles I&apos;ve held. Swipe or use
@@ -48,11 +48,15 @@ const NewWorkExperience = ({ experiences }: Props) => {
 
         <div className="lg:w-2/3 max-h-[70vh] overflow-y-auto space-y-6 pr-4 no-scrollbar">
           {experiences.map((company, index) => (
-            <Card
+            <motion.div
               key={company._id + index}
-              className="bg-[rgb(14,24,36)] border-white/10 shadow-lg"
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.06 }}
             >
-              <CardHeader>
+              <Card className="bg-[rgb(14,24,36)] border-white/10 shadow-lg">
+                <CardHeader>
                 <div className="flex items-center gap-4">
                   {/* <motion.div
                     initial={{ y: -20, opacity: 0 }}
@@ -108,6 +112,7 @@ const NewWorkExperience = ({ experiences }: Props) => {
                 </p>
               </CardContent>
             </Card>
+            </motion.div>
           ))}
         </div>
       </div>
