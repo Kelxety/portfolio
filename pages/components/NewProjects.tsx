@@ -1,16 +1,8 @@
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { urlFor } from "../../sanity";
 import { Project } from "../../typings";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-} from "@/components/ui/carousel";
-import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -27,111 +19,44 @@ const NewProjects = ({ projects }: Props) => {
   }
 
   return (
-    <section>
-      <motion.div className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-5xl px-2 md:px-10 justify-evenly mx-auto items-center">
-        <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
-          Projects
-        </h3>
+    <section className="h-screen py-40 bg-[rgb(15,23,36)]">
+      <motion.div className="w-full px-6 md:px-20">
+        <div className="container mx-auto flex flex-col lg:flex-row items-start gap-12">
+          <div className="lg:w-1/3">
+            <h3 className="uppercase tracking-[8px] text-gray-500 text-sm md:text-base lg:text-lg opacity-10">Projects</h3>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mt-4 uppercase">Recent Projects</h2>
+            <p className="mt-4 text-gray-400 max-w-sm">A curated list of projects. Scroll to explore.</p>
+          </div>
 
-        <div className="w-full rounded-xl py-10 px-4 bg-gray-800">
-          <Carousel>
-            <CarouselContent>
-              {projects?.map((project) => (
-                <CarouselItem key={project.title}>
-                  {project.image && (
-                    <motion.img
-                      initial={{
-                        y: -100,
-                        opacity: 0,
-                      }}
-                      transition={{
-                        duration: 1.2,
-                      }}
-                      viewport={{ once: true }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      className="mt-14 rounded-md w-full h-14 sm:h-[150px]  lg:h-[150px] object-cover object-center mb-4"
-                      src={urlFor(project?.image).url()}
-                      alt=""
-                    />
-                  )}
-                  <Card>
-                    <CardHeader>
-                      <div className="flex sm:flex-row flex-col justify-center items-center">
-                        {project?.logo && (
-                          <>
-                            <motion.img
-                              initial={{
-                                y: -100,
-                                opacity: 0,
-                              }}
-                              transition={{
-                                duration: 1.2,
-                              }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              viewport={{ once: true }}
-                              className="w-16 h-16 rounded-full xl:w-[75px] xl:h-[75px] object-cover object-center m-4"
-                              src={urlFor(project?.logo).url()}
-                              alt=""
-                            />
-                          </>
-                        )}
+          <div className="lg:w-2/3 max-h-[70vh] overflow-y-auto space-y-6 pr-4 no-scrollbar">
+            {projects?.map((project) => (
+              <Card key={project.title} className="bg-[rgb(14,24,36)] border-white/10 shadow-lg">
+                <CardHeader>
+                  <div className="flex sm:flex-row flex-col items-center gap-4">
+                    <div>
+                      <CardTitle className="text-xl md:text-2xl text-yellow-500">{project.title}</CardTitle>
+                      <CardDescription className="text-gray-300">{project.summary}</CardDescription>
+                    </div>
+                  </div>
 
-                        <div>
-                          <CardTitle>{project.title}</CardTitle>
-                          <CardDescription>{project.summary}</CardDescription>
+                  <div className="text-center text-sm text-gray-400 mt-3">
+                    Website Link: <a className="hover:text-blue-600 text-blue-400" href={project.linkToBuild} target="_blank" rel="noreferrer">{project.title}</a>
+                  </div>
+
+                  <div className="text-center text-sm text-gray-400 mt-2">
+                    Tech Stack Used:
+                    <div className="flex flex-wrap justify-center gap-3 mt-2">
+                      {project.technologies.map((tech) => (
+                        <div key={tech._id} className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-md">
+                          <span className="text-blue-400 text-sm">{tech.title}</span>
                         </div>
-                      </div>
-                      <div className="text-center text-sm text-gray-400">
-                        Website Link:{" "}
-                        <a
-                          className="hover:text-blue-600 text-blue-400"
-                          href={project.linkToBuild}
-                          target="blank"
-                        >
-                          {project.title}
-                        </a>
-                      </div>
-                      <div className="text-center text-sm text-gray-400">
-                        Tech Stack Used:{" "}
-                        <span className="grid grid-cols-3 gap-2 sm:flex  text-center justify-center">
-                          {project.technologies.map((tech) => (
-                            <div
-                              key={tech._id}
-                              className="flex justify-center items-center space-x-2"
-                            >
-                              <div>
-                                {tech.image && (
-                                  <>
-                                    <motion.img
-                                      initial={{
-                                        y: 50,
-                                        opacity: 0,
-                                      }}
-                                      transition={{
-                                        duration: 1.2,
-                                      }}
-                                      whileInView={{ opacity: 1, y: 0 }}
-                                      viewport={{ once: true }}
-                                      className="w-4 h-4 rounded-full object-cover object-center"
-                                      src={urlFor(tech?.image).url() || ""}
-                                      alt=""
-                                    />
-                                  </>
-                                )}
-                              </div>
-                              <div className="text-blue-400" key={tech._id}>
-                                {tech.title}
-                              </div>
-                            </div>
-                          ))}
-                        </span>
-                      </div>
-                    </CardHeader>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                      ))}
+                    </div>
+                  </div>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
         </div>
       </motion.div>
     </section>

@@ -31,7 +31,7 @@ const NewWorkExperience = ({ experiences }: Props) => {
     return 0;
   });
   return (
-    <motion.section className="h-screen w-full flex items-center overflow-hidden px-6 md:px-20">
+    <motion.section className="h-screen bg-[rgb(15,23,36)] w-full flex items-center overflow-hidden px-6 md:px-20">
       <div className="container mx-auto flex flex-col lg:flex-row items-start gap-12">
         <div className="lg:w-1/3">
           <h3 className="uppercase tracking-[8px] text-gray-500 text-sm md:text-base lg:text-lg opacity-10">
@@ -50,7 +50,7 @@ const NewWorkExperience = ({ experiences }: Props) => {
           {experiences.map((company, index) => (
             <Card
               key={company._id + index}
-              className="bg-neutral-800 border-none shadow-lg"
+              className="bg-[rgb(14,24,36)] border-white/10 shadow-lg"
             >
               <CardHeader>
                 <div className="flex items-center gap-4">
