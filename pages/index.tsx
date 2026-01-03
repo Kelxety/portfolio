@@ -29,7 +29,7 @@ interface Props {
 const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
   const title = pageInfo.name + " " + "Portfolio";
   return (
-    <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 md:scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-red-500/80">
+    <div className="bg-[rgb(15,23,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 md:scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-yellow-500/80">
       <Head>
         <title>{title} </title>
         <meta name="description" content="This is my Portfolio" />
@@ -70,25 +70,8 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
 
           {/* Contact Me */}
           <section id="contact" className="snap-start">
-            <ContactMe />
+            <ContactMe pageInfo={pageInfo} />
           </section>
-
-          <Link href="#hero">
-            <footer className="bottom-5 w-full cursor-pointer">
-              <div className="flex items-center justify-center">
-                <Image
-                  className="h-5 w-8 rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
-                  src={"/images/jrl.png"}
-                  alt={`${pageInfo?.name} logo`}
-                  width={32}
-                  height={32}
-                />
-                <p className="text-xs p-4 text-white/50">
-                  Copyright @ jrldev.programmer@gmail.com
-                </p>
-              </div>
-            </footer>
-          </Link>
         </>
       )}
     </div>
