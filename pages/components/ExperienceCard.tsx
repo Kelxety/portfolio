@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Experience } from "../../typings";
 import { urlFor } from "../../sanity";
 
@@ -27,20 +28,22 @@ const ExperienceCard = ({ experience }: Props) => {
     <article className="flex flex-col rounded-lg items-center justify-center space-x-7 flex-shrink-0 w-[400px] md:w-[600px] xl:w-[800px] snap-center bg-[#292929] hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden px-10 py-4">
       {experience && (
         <>
-          <motion.img
-            initial={{
-              y: -100,
-              opacity: 0,
-            }}
-            transition={{
-              duration: 1.2,
-            }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="w-16 h-16 rounded-full xl:w-[150px] xl:h-[150px] object-cover object-center m-4"
-            src={urlFor(experience?.companyImage).url()}
-            alt=""
-          />
+          {/** Use Next.js Image with framer-motion for animated images */}
+          {(() => {
+            const MotionImage = motion(Image);
+            return (
+              <MotionImage
+                initial={{ y: -100, opacity: 0 }}
+                transition={{ duration: 1.2 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                src={urlFor(experience?.companyImage).url() || ""}
+                alt={experience.company || "company logo"}
+                width={150}
+                height={150}
+                className="w-16 h-16 rounded-full xl:w-[150px] xl:h-[150px] object-cover object-center m-4"
+              />
+            );
+          })()}
           <div className="px-0 md:px-10">
             <h4 className="text-xl md:text-1xl lg:text-2xl font-light text-center">
               {experience?.jobTitle}
@@ -50,10 +53,13 @@ const ExperienceCard = ({ experience }: Props) => {
             </p>
             <div className="flex space-x-2 my-2">
               {experience?.technologies.map((technology) => (
-                <img
+                <Image
                   key={technology._id}
                   className="h-5 w-5 rounded-full"
-                  src={urlFor(technology?.image).url()}
+                  src={urlFor(technology?.image).url() || ""}
+                  alt={technology.title || technology._id}
+                  width={20}
+                  height={20}
                 />
               ))}
             </div>

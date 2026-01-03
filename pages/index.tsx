@@ -1,6 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { Experience, PageInfo, Project, Skill, Social } from "../typings";
 import { fetchExperiences } from "../utils/fetchExperiences";
 import { fetchPageInfo } from "../utils/fetchPageInfo";
@@ -75,10 +76,12 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
           <Link href="#hero">
             <footer className="bottom-5 w-full cursor-pointer">
               <div className="flex items-center justify-center">
-                <img
+                <Image
                   className="h-5 w-8 rounded-full filter grayscale hover:grayscale-0 cursor-pointer"
                   src={"/images/jrl.png"}
-                  alt=""
+                  alt={`${pageInfo?.name} logo`}
+                  width={32}
+                  height={32}
                 />
                 <p className="text-xs p-4 text-white/50">
                   Copyright @ jrldev.programmer@gmail.com

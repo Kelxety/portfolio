@@ -35,20 +35,22 @@ const NewWorkExperience = ({ experiences }: Props) => {
               <Card>
                 <CardHeader>
                   <div className="flex justify-center items-center">
-                    <motion.img
-                      initial={{
-                        y: -100,
-                        opacity: 0,
-                      }}
-                      transition={{
-                        duration: 1.2,
-                      }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      className="w-16 h-16 rounded-full xl:w-[75px] xl:h-[75px] object-cover object-center m-4"
-                      src={urlFor(company?.companyImage).url()}
-                      alt=""
-                    />
+                    {(() => {
+                      const MotionImage = motion(Image);
+                      return (
+                        <MotionImage
+                          initial={{ y: -100, opacity: 0 }}
+                          transition={{ duration: 1.2 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          src={urlFor(company?.companyImage).url() || ""}
+                          alt={company.company || "company logo"}
+                          width={75}
+                          height={75}
+                          className="w-16 h-16 rounded-full xl:w-[75px] xl:h-[75px] object-cover object-center m-4"
+                        />
+                      );
+                    })()}
                     <div>
                       <CardTitle>{company.company}</CardTitle>
                       <CardDescription>{company.jobTitle}</CardDescription>
@@ -59,11 +61,14 @@ const NewWorkExperience = ({ experiences }: Props) => {
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     <div className="flex space-x-2 my-2">
                       {company?.technologies.map((technology) => (
-                        <img
-                          key={technology._id}
-                          className="h-5 w-5 rounded-full"
-                          src={urlFor(technology?.image).url()}
-                        />
+                          <Image
+                            key={technology._id}
+                            className="h-5 w-5 rounded-full"
+                            src={urlFor(technology?.image).url() || ""}
+                            alt={technology.title || technology._id}
+                            width={20}
+                            height={20}
+                          />
                       ))}
                     </div>
                     <p className="uppercase py-5 text-gray-300">
