@@ -59,13 +59,13 @@ const Hero = ({ pageInfo }: Props) => {
                 <h5 className="text-center uppercase w-[100px] text-gray-500">Projects Completed</h5>
               </div>
             </div>
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-4">
+            <div className="mt-8 flex w-full items-center justify-center lg:justify-center gap-4">
               <Link href="#projects">
                 <a className="heroButton">View Projects</a>
               </Link>
-              <Link href="#contact">
+              {/* <Link href="#contact">
                 <a className="px-4 py-3 rounded-md border border-gray-700 text-gray-200 hover:border-gray-500 transition">Contact</a>
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className="flex items-center justify-center rounded-xl shadow-2xl">
