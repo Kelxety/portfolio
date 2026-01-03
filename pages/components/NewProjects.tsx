@@ -24,14 +24,21 @@ const NewProjects = ({ projects }: Props) => {
         <div className="container mx-auto flex flex-col lg:flex-row items-start gap-12">
           <div className="lg:w-1/3">
             <h3 className="uppercase tracking-[8px] text-gray-500 text-sm md:text-base lg:text-lg opacity-10">Projects</h3>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mt-4 uppercase">Recent Projects</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mt-4 uppercase">Recent <span className="text-yellow-500">Projects</span></h2>
             <p className="mt-4 text-gray-400 max-w-sm">A curated list of projects. Scroll to explore.</p>
           </div>
 
           <div className="lg:w-2/3 max-h-[70vh] overflow-y-auto space-y-6 pr-4 no-scrollbar">
-            {projects?.map((project) => (
-              <Card key={project.title} className="bg-[rgb(14,24,36)] border-white/10 shadow-lg">
-                <CardHeader>
+            {projects?.map((project, i) => (
+              <motion.div
+                key={project.title}
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: i * 0.08 }}
+              >
+                <Card className="bg-[rgb(14,24,36)] border-white/10 shadow-lg">
+                  <CardHeader>
                   <div className="flex sm:flex-row flex-col items-center gap-4">
                     <div>
                       <CardTitle className="text-xl md:text-2xl text-yellow-500">{project.title}</CardTitle>
@@ -54,7 +61,8 @@ const NewProjects = ({ projects }: Props) => {
                     </div>
                   </div>
                 </CardHeader>
-              </Card>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
