@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -23,68 +24,94 @@ type Props = {
 };
 
 const NewWorkExperience = ({ experiences }: Props) => {
+  experiences.sort((a, b) => {
+    if (a.dateStarted && b.dateStarted) {
+      return new Date(b.dateStarted).getTime() - new Date(a.dateStarted).getTime();
+    }
+    return 0;
+  });
   return (
-    <motion.div className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-5xl px-2 md:px-10 justify-evenly mx-auto items-center">
-      <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-sm md:text-2xl">
-        Experience
-      </h3>
-      <Carousel>
-        <CarouselContent>
-          {experiences?.map((company) => (
-            <CarouselItem key={company.company}>
-              <Card>
-                <CardHeader>
-                  <div className="flex justify-center items-center">
-                    {(() => {
-                      const MotionImage = motion(Image);
-                      return (
-                        <MotionImage
-                          initial={{ y: -100, opacity: 0 }}
-                          transition={{ duration: 1.2 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          src={urlFor(company?.companyImage).url() || ""}
-                          alt={company.company || "company logo"}
-                          width={75}
-                          height={75}
-                          className="w-16 h-16 rounded-full xl:w-[75px] xl:h-[75px] object-cover object-center m-4"
-                        />
-                      );
-                    })()}
-                    <div>
-                      <CardTitle>{company.company}</CardTitle>
-                      <CardDescription>{company.jobTitle}</CardDescription>
-                    </div>
+    <motion.section className="h-screen w-full flex items-center overflow-hidden px-6 md:px-20">
+      <div className="container mx-auto flex flex-col lg:flex-row items-start gap-12">
+        <div className="lg:w-1/3">
+          <h3 className="uppercase tracking-[8px] text-gray-500 text-sm md:text-base lg:text-lg opacity-10">
+            Experience
+          </h3>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mt-4">
+            10 YEARS OF EXPERIENCE
+          </h2>
+          <p className="mt-4 text-gray-400 max-w-sm">
+            A selection of companies and roles I&apos;ve held. Swipe or use
+            arrows to browse.
+          </p>
+        </div>
+
+        <div className="lg:w-2/3 max-h-[70vh] overflow-y-auto space-y-6 pr-4 no-scrollbar">
+          {experiences.map((company, index) => (
+            <Card
+              key={company._id + index}
+              className="bg-neutral-800 border-none shadow-lg"
+            >
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  {/* <motion.div
+                    initial={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.6 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="w-16 h-16 rounded-full overflow-hidden bg-gray-800 flex-shrink-0"
+                  >
+                    {company?.companyImage && (
+                      <Image
+                        src={urlFor(company.companyImage).url()}
+                        alt={company.company || "company logo"}
+                        width={75}
+                        height={75}
+                        className="object-cover"
+                      />
+                    )}
+                  </motion.div> */}
+                  <div>
+                    <CardTitle className="text-xl md:text-2xl text-yellow-500">
+                      {company.company}
+                    </CardTitle>
+                    <CardDescription className="text-gray-300">
+                      {company.jobTitle}
+                    </CardDescription>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    <div className="flex space-x-2 my-2">
-                      {company?.technologies.map((technology) => (
-                          <Image
-                            key={technology._id}
-                            className="h-5 w-5 rounded-full"
-                            src={urlFor(technology?.image).url() || ""}
-                            alt={technology.title || technology._id}
-                            width={20}
-                            height={20}
-                          />
-                      ))}
-                    </div>
-                    <p className="uppercase py-5 text-gray-300">
-                      {new Date(company?.dateStarted).toDateString()} -{" "}
-                      {company?.isCurrentlyWorkingHere
-                        ? "Present"
-                        : new Date(company?.dateEnded).toDateString()}
-                    </p>
+                </div>
+              </CardHeader>
+
+              <CardContent>
+                <div className="text-sm text-gray-200">
+                  <p className="ml-5 max-h-40 overflow-y-auto pr-2 no-scrollbar text-gray-300">
+                    {company.points?.join(", ")}
                   </p>
-                </CardContent>
-              </Card>
-            </CarouselItem>
+                </div>
+
+                <p className="text-sm text-gray-400 mt-4">
+                  {company.dateStarted
+                    ? new Date(company.dateStarted).toLocaleString(undefined, {
+                        month: "long",
+                        year: "numeric",
+                      })
+                    : ""}
+                  {" "}-{" "}
+                  {company.isCurrentlyWorkingHere
+                    ? "Present"
+                    : company.dateEnded
+                    ? new Date(company.dateEnded).toLocaleString(undefined, {
+                        month: "long",
+                        year: "numeric",
+                      })
+                    : ""}
+                </p>
+              </CardContent>
+            </Card>
           ))}
-        </CarouselContent>
-      </Carousel>
-    </motion.div>
+        </div>
+      </div>
+    </motion.section>
   );
 };
 

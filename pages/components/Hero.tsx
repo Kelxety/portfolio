@@ -1,5 +1,7 @@
+'use client'
 import React from "react";
-import { Cursor, useTypewriter } from "react-simple-typewriter";
+import dynamic from 'next/dynamic';
+const TypewriterText = dynamic(() => import('../../components/TypewriterText'), { ssr: false });
 import BackgroundOfHero from "./BackgroundOfHero";
 import Link from "next/link";
 import { PageInfo } from "../../typings";
@@ -13,15 +15,11 @@ type Props = {
 };
 
 const Hero = ({ pageInfo }: Props) => {
-  const [text, count] = useTypewriter({
-    words: [
-      `Hello I am ${pageInfo?.name}`,
-      "I love to work with you.",
-      "<FullStack />",
-    ],
-    loop: true,
-    delaySpeed: 2000,
-  });
+  const words = [
+    `Hello I am ${pageInfo?.name}`,
+    "I love to work with you.",
+    "<FullStack />",
+  ];
   const role = pageInfo?.role || "";
   const roleParts = role.trim().split(/\s+/).filter(Boolean);
   const icons = [
@@ -44,7 +42,7 @@ const Hero = ({ pageInfo }: Props) => {
               )}
             </h2>
             {/* <h1 className="text-4xl md:text-6xl lg:text-lg font-extrabold leading-tight">
-              {text}
+              <TypewriterText words={words} />
             </h1> */}
             <p className="text-gray-500 max-w-xl mx-auto lg:mx-0">
               {pageInfo?.backgroundInformation}
@@ -71,18 +69,21 @@ const Hero = ({ pageInfo }: Props) => {
           <div className="flex items-center justify-center rounded-xl shadow-2xl">
             <div className="p-8 flex flex-col justify-center items-center">
               <div className="px-2">
-                {(() => {
-                  const MotionImage = motion(Image);
-                  return (
-                    <MotionImage
+                  <motion.div
+                    initial={{ y: -20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="rounded-xl shadow-2xl overflow-hidden"
+                  >
+                    <Image
                       src={urlFor(pageInfo?.heroImage).url() || ""}
                       alt={pageInfo?.name || "hero image"}
-                      width={320}
-                      height={320}
-                      className="rounded-xl shadow-2xl object-cover"
+                      width={420}
+                      height={420}
+                      className="rounded-xl object-cover"
                     />
-                  );
-                })()}
+                  </motion.div>
               </div>
               <h2 className="text-neutral-200 uppercase mt-2 font-extrabold text-3xl text-center">{pageInfo?.name || "John Robin Llanzana"}</h2>
               <p className="text-center text-gray-400 font-semibold mt-2 w-3/4">{"A Software Engineer who has developed countless innovative solutions."}</p>

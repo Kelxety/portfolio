@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -29,21 +30,21 @@ const ExperienceCard = ({ experience }: Props) => {
       {experience && (
         <>
           {/** Use Next.js Image with framer-motion for animated images */}
-          {(() => {
-            const MotionImage = motion(Image);
-            return (
-              <MotionImage
-                initial={{ y: -100, opacity: 0 }}
-                transition={{ duration: 1.2 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                src={urlFor(experience?.companyImage).url() || ""}
-                alt={experience.company || "company logo"}
-                width={150}
-                height={150}
-                className="w-16 h-16 rounded-full xl:w-[150px] xl:h-[150px] object-cover object-center m-4"
-              />
-            );
-          })()}
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            transition={{ duration: 1.2 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="w-16 h-16 rounded-full xl:w-[150px] xl:h-[150px] object-cover object-center m-4 overflow-hidden"
+          >
+            <Image
+              src={urlFor(experience?.companyImage).url() || ""}
+              alt={experience.company || "company logo"}
+              width={150}
+              height={150}
+              className="object-cover"
+            />
+          </motion.div>
           <div className="px-0 md:px-10">
             <h4 className="text-xl md:text-1xl lg:text-2xl font-light text-center">
               {experience?.jobTitle}
