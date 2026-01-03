@@ -24,12 +24,14 @@ type Props = {
 };
 
 const NewWorkExperience = ({ experiences }: Props) => {
-  experiences.sort((a, b) => {
-    if (a.dateStarted && b.dateStarted) {
-      return new Date(b.dateStarted).getTime() - new Date(a.dateStarted).getTime();
-    }
-    return 0;
-  });
+  const sortedExperiences = Array.isArray(experiences)
+    ? [...experiences].sort((a, b) => {
+        if (a.dateStarted && b.dateStarted) {
+          return new Date(b.dateStarted).getTime() - new Date(a.dateStarted).getTime();
+        }
+        return 0;
+      })
+    : [];
   return (
     <motion.section className="h-screen bg-[rgb(15,23,36)] w-full flex items-center overflow-hidden px-6 md:px-20">
       <div className="container mx-auto flex flex-col lg:flex-row items-start gap-12">
@@ -47,7 +49,7 @@ const NewWorkExperience = ({ experiences }: Props) => {
         </div>
 
         <div className="lg:w-2/3 max-h-[70vh] overflow-y-auto space-y-6 pr-4 no-scrollbar">
-          {experiences.map((company, index) => (
+          {sortedExperiences.map((company, index) => (
             <motion.div
               key={company._id + index}
               initial={{ y: 20, opacity: 0 }}
