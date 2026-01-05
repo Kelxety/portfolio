@@ -9,7 +9,6 @@ type Props = {
 };
 
 const Skill = ({ skill, directionLeft }: Props) => {
-  console.log("Skill component rendered with skill:", skill);
   return (
     <div className="group relative flex cursor-pointer">
       {skill && skill.image && (
