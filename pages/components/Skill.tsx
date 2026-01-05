@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Skill } from "../../typings";
 import { urlFor } from "../../sanity";
+import type { Skill } from "@/typings";
 
 type Props = {
   skill: Skill;
@@ -9,9 +9,10 @@ type Props = {
 };
 
 const Skill = ({ skill, directionLeft }: Props) => {
+  console.log("Skill component rendered with skill:", skill);
   return (
     <div className="group relative flex cursor-pointer">
-      {skill && (
+      {skill && skill.image && (
         <>
           <motion.img
             initial={{
@@ -20,8 +21,8 @@ const Skill = ({ skill, directionLeft }: Props) => {
             }}
             transition={{ duration: 1 }}
             whileInView={{ opacity: 1, x: 0 }}
-            src={urlFor(skill?.image).url()}
-            className="rounded-full border border-gray-500 object-cover w-10 h-10md:h-14 md:w-14 xl:w-16 xl:h-16 filter group-hover:grayscale transition duration-300 ease-in-out"
+            src={urlFor(skill.image).url()}
+            className="rounded-full border border-gray-500 object-cover w-10 h-10 md:h-14 md:w-14 xl:w-16 xl:h-16 filter group-hover:grayscale transition duration-300 ease-in-out"
           />
           <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white w-10 h-10 md:h-14 md:w-14 xl:w-16 xl:h-16 rounded-full z-0">
             <div className="flex items-center justify-center h-full">
