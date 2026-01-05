@@ -178,7 +178,7 @@ const Hero = ({ pageInfo }: Props) => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <IconComponent className="text-red-500 hover:text-gray-400 transition" />
+                        <IconComponent className="text-yellow-500 hover:text-gray-400 transition" />
                       </Link>
                     </motion.div>
                   );
