@@ -7,17 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Experience } from "@/typings";
-import React from "react";
-import { urlFor } from "@/sanity";
-import Image from "next/image";
 
 type Props = {
   experiences: Experience[];
@@ -33,22 +23,22 @@ const NewWorkExperience = ({ experiences }: Props) => {
       })
     : [];
   return (
-    <motion.section className="h-screen bg-[rgb(15,23,36)] w-full flex items-center overflow-hidden px-6 md:px-20">
-      <div className="container mx-auto flex flex-col lg:flex-row items-start gap-12">
+    <motion.section className="h-screen bg-[rgb(15,23,36)] w-full flex items-center overflow-hidden px-4 sm:px-6 md:px-20">
+      <div className="container mx-auto flex flex-col lg:flex-row items-start gap-6 sm:gap-8 lg:gap-12">
         <div className="lg:w-1/3">
-          <h3 className="uppercase tracking-[8px] text-gray-500 text-sm md:text-base lg:text-lg opacity-10">
+          <h3 className="uppercase tracking-[4px] sm:tracking-[6px] lg:tracking-[8px] text-gray-500 text-xs sm:text-sm md:text-base lg:text-lg opacity-10">
             Experience
           </h3>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mt-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-2 sm:mt-4">
             10 YEARS OF <span className="text-yellow-500">EXPERIENCE</span>
           </h2>
-          <p className="mt-4 text-gray-400 max-w-sm">
+          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-400 max-w-sm">
             A selection of companies and roles I&apos;ve held. Swipe or use
             arrows to browse.
           </p>
         </div>
 
-        <div className="lg:w-2/3 max-h-[70vh] overflow-y-auto space-y-6 pr-4 no-scrollbar">
+        <div className="lg:w-2/3 max-h-[60vh] sm:max-h-[65vh] lg:max-h-[70vh] overflow-y-auto space-y-4 sm:space-y-6 pr-2 sm:pr-4 no-scrollbar">
           {sortedExperiences.map((company, index) => (
             <motion.div
               key={company._id + index}
@@ -58,8 +48,8 @@ const NewWorkExperience = ({ experiences }: Props) => {
               transition={{ duration: 0.6, delay: index * 0.06 }}
             >
               <Card className="bg-[rgb(14,24,36)] border-white/10 shadow-lg">
-                <CardHeader>
-                <div className="flex items-center gap-4">
+                <CardHeader className="p-4 sm:p-6">
+                <div className="flex items-center gap-3 sm:gap-4">
                   {/* <motion.div
                     initial={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.6 }}
@@ -78,24 +68,24 @@ const NewWorkExperience = ({ experiences }: Props) => {
                     )}
                   </motion.div> */}
                   <div>
-                    <CardTitle className="text-xl md:text-2xl text-yellow-500">
+                    <CardTitle className="text-lg sm:text-xl md:text-2xl text-yellow-500">
                       {company.company}
                     </CardTitle>
-                    <CardDescription className="text-gray-300">
+                    <CardDescription className="text-sm sm:text-base text-gray-300">
                       {company.jobTitle}
                     </CardDescription>
                   </div>
                 </div>
               </CardHeader>
 
-              <CardContent>
-                <div className="text-sm text-gray-200">
-                  <p className="ml-5 max-h-40 overflow-y-auto pr-2 no-scrollbar text-gray-300">
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <div className="text-xs sm:text-sm text-gray-200">
+                  <p className="ml-3 sm:ml-5 max-h-32 sm:max-h-40 overflow-y-auto pr-2 no-scrollbar text-gray-300">
                     {company.points?.join(", ")}
                   </p>
                 </div>
 
-                <p className="text-sm text-gray-400 mt-4">
+                <p className="text-xs sm:text-sm text-gray-400 mt-3 sm:mt-4">
                   {company.dateStarted
                     ? new Date(company.dateStarted).toLocaleString(undefined, {
                         month: "long",
